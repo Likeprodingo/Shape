@@ -1,8 +1,7 @@
 package by.shibaev.shape.service;
 
-import by.shibaev.shape.entity.Flat;
+import by.shibaev.shape.entity.FlatType;
 import by.shibaev.shape.entity.Shape;
-import by.shibaev.shape.exception.CustomException;
 
 public interface ShapeService {
 
@@ -10,7 +9,7 @@ public interface ShapeService {
 
     double calculateSquare(Shape shape);
 
-    double calculateVolumeRatio(Shape shape, Flat flat);
+    double calculateVolumeRatio(Shape shape, FlatType flat);
 
-    boolean isRelate(Shape shape, Flat flat);
+    boolean isRelate(Shape shape, FlatType flat);
 }
