@@ -8,6 +8,9 @@ import by.shibaev.shape.entity.shape.Sphere;
 import by.shibaev.shape.reader.ParameterIndex;
 import by.shibaev.shape.validator.ShapeValidator;
 import by.shibaev.shape.validator.factory.ValidatorFactory;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +19,7 @@ import java.util.stream.Collectors;
 
 public class InputShapeParser {
     private static final String LINE_FORMAT_PATTERN = " ";
+    private static Logger logger = LogManager.getLogger();
 
     public List<Shape> parseData(List<String> lines) {
         List<Shape> shapes;
@@ -27,6 +31,7 @@ public class InputShapeParser {
                 .map((s -> shapeFactory.getShape(s).get())
                 )
                 .collect(Collectors.toList());
+        logger.log(Level.INFO, "parsed {}, wrong {}", shapes.size(), lines.size() - shapes.size());
         return shapes;
     }
 
@@ -39,7 +44,7 @@ public class InputShapeParser {
             String value = parameters.get(ParameterIndex.TYPE_INDEX);
             for (ShapeType type : ShapeType.values()) {
                 validator = validatorFactory.getValidator(type);
-                if(validator.isEmpty()){
+                if (validator.isEmpty()) {
                     continue;
                 }
                 if (type.getName().equals(value) && validator.get().isParamsValid(line)) {
@@ -48,12 +53,12 @@ public class InputShapeParser {
                 }
             }
         } catch (IndexOutOfBoundsException e) {
-            //log
+            logger.log(Level.ERROR, "wrong shape data{}", line, e);
         }
         return result;
     }
 
-    public List<String> parseParameters(String line){
+    public List<String> parseParameters(String line) {
         return Arrays.asList(line.split(LINE_FORMAT_PATTERN));
     }
 
