@@ -11,7 +11,6 @@ import java.util.List;
 
 public class SphereValidator implements ShapeValidator {
     private static final int MAX_RADIUS = 1000;
-
     @Override
     public boolean isParamsValid(String line) {
         boolean res = true;

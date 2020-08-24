@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Сonfiguration status="WARN">
+<Сonfiguration status="DEBUG">
     <Properties>
         <property name = "pattern">
             %d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{5}- %msg%n

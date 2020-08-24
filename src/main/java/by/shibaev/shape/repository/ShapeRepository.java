@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class ShapeRepository {
@@ -42,18 +41,37 @@ public class ShapeRepository {
         return result;
     }
 
+    public boolean contains(Shape shape) {
+        boolean result = false;
+        for (Shape s : shapes) {
+            if (s.getId() == shape.getId()) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
     public void add(Shape shape) throws CustomException {
-        ShapeWareHouse shapeWareHouse = ShapeWareHouse.getInstance();
-        shapeWareHouse.add(shape);
-        logger.log(Level.INFO, "shape added: {}", shape);
-        shapes.add(shape);
+        if (!contains(shape)) {
+            ShapeWareHouse shapeWareHouse = ShapeWareHouse.getInstance();
+            shapeWareHouse.add(shape);
+            logger.log(Level.INFO, "shape added: {}", shape);
+            shapes.add(shape);
+        } else {
+            logger.log(Level.WARN, "shape already exists: {}", shape);
+        }
     }
 
     public void remove(Shape shape) {
-        ShapeWareHouse shapeWareHouse = ShapeWareHouse.getInstance();
-        shapeWareHouse.remove(shape);
-        logger.log(Level.INFO, "shape removed: {}", shape);
-        shapes.remove(shape);
+        if (!contains(shape)) {
+            ShapeWareHouse shapeWareHouse = ShapeWareHouse.getInstance();
+            shapeWareHouse.remove(shape);
+            logger.log(Level.INFO, "shape removed: {}", shape);
+            shapes.remove(shape);
+        } else {
+            logger.log(Level.WARN, "shape doesn't exists: {}", shape);
+        }
     }
 
     public List<Shape> query(ShapeSpecification specification) {
