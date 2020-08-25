@@ -18,7 +18,7 @@ public class FullFillTest {
     public void fullFillTest() throws CustomException {
         CustomFileReader reader = CustomFileReader.getInstance();
         InputShapeParser parser = new InputShapeParser();
-        List<String> data = reader.read();
+        List<String> data = reader.read("data.txt");
         List<Shape> shapes = parser.parseData(data);
         assertEquals(shapes.size(), 1);
     }

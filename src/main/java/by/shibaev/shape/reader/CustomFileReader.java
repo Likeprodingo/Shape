@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class CustomFileReader {
     private static Logger logger = LogManager.getLogger();
     private static CustomFileReader instance;
-    private static final String DIRECTORY_PATH = "src/main/resources/";
+    private static final String DIRECTORY_PATH = "D:\\servlet\\src\\main\\resources\\upload\\";
 
     private CustomFileReader() {
     }
