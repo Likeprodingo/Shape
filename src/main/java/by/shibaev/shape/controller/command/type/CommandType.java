@@ -1,11 +1,13 @@
 package by.shibaev.shape.controller.command.type;
 
 import by.shibaev.shape.controller.command.CommandProcessor;
-import by.shibaev.shape.controller.command.impl.GetCommand;
+import by.shibaev.shape.controller.command.impl.GetFileCommand;
+import by.shibaev.shape.controller.command.impl.GetSphereCommand;
 
 public enum CommandType {
 
-    GET("get", new GetCommand());
+    GET_FILES("files", new GetFileCommand()),
+    GET("get_sphere", new GetSphereCommand());
 
     String name;
     CommandProcessor command;

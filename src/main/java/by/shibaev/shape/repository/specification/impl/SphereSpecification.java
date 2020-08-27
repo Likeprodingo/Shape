@@ -4,15 +4,12 @@ import by.shibaev.shape.entity.Shape;
 import by.shibaev.shape.entity.shape.Sphere;
 import by.shibaev.shape.repository.specification.ShapeSpecification;
 
-public class SpherePositiveSpecification implements ShapeSpecification {
+public class SphereSpecification implements ShapeSpecification {
     @Override
     public boolean test(Shape shape) {
-        boolean result;
+        boolean result = true;
         try {
             Sphere sphere = (Sphere) shape;
-            result = sphere.getCenter().getxPosition() >= 0 &&
-                    sphere.getCenter().getyPosition() >= 0 &&
-                    sphere.getCenter().getzPosition() >= 0;
         } catch (ClassCastException e) {
             result = false;
         }

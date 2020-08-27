@@ -31,7 +31,6 @@ public class FileUploadServlet extends HttpServlet {
     private static final String PATH = "/main.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 
         List<FileItem> files = null;
@@ -48,7 +47,7 @@ public class FileUploadServlet extends HttpServlet {
             logger.log(Level.ERROR, "Parse exception", e);
         }
         ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher(PATH);
+        RequestDispatcher dispatcher = context.getRequestDispatcher(JspPath.HELLO);
         dispatcher.forward(request, response);
     }
 }

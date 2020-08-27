@@ -6,6 +6,9 @@ import by.shibaev.shape.entity.Shape;
 import by.shibaev.shape.entity.shape.Sphere;
 import by.shibaev.shape.service.ShapeService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SphereServiceImpl implements ShapeService {
     private static SphereServiceImpl instance;
     private static double PI = 3.1415926;
@@ -66,5 +69,15 @@ public class SphereServiceImpl implements ShapeService {
                 break;
         }
         return distance;
+    }
+
+    public List<Sphere> convert(List<Shape> shapes) {
+        List<Sphere> spheres = new ArrayList<>();
+        for (Shape shape : shapes) {
+            if (shape instanceof Sphere) {
+                spheres.add((Sphere) shape);
+            }
+        }
+        return spheres;
     }
 }
