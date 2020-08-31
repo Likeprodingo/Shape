@@ -2,7 +2,7 @@ package by.shibaev.shape.repository;
 
 import by.shibaev.shape.entity.Shape;
 import by.shibaev.shape.exception.CustomException;
-import by.shibaev.shape.repository.specification.ShapeSpecification;
+import by.shibaev.shape.specification.ShapeSpecification;
 import by.shibaev.shape.warehouse.ShapeWareHouse;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

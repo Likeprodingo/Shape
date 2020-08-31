@@ -1,4 +1,4 @@
-package by.shibaev.shape.repository.specification;
+package by.shibaev.shape.specification;
 
 import by.shibaev.shape.entity.Shape;
 

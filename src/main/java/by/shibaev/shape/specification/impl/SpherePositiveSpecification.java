@@ -1,8 +1,8 @@
-package by.shibaev.shape.repository.specification.impl;
+package by.shibaev.shape.specification.impl;
 
 import by.shibaev.shape.entity.Shape;
 import by.shibaev.shape.entity.shape.Sphere;
-import by.shibaev.shape.repository.specification.ShapeSpecification;
+import by.shibaev.shape.specification.ShapeSpecification;
 
 public class SpherePositiveSpecification implements ShapeSpecification {
     @Override
