@@ -41,7 +41,10 @@ public class SphereServiceImpl implements ShapeService {
         double result;
         double distance = calculateDistance(sphere.getCenter(), flat);
         if (distance < sphere.getRadius()) {
-            result = distance / sphere.getRadius();
+            result = distance / (sphere.getRadius() * 2 - distance);
+            if(distance == 0){
+                result = 0.5;
+            }
         } else {
             result = 0;
         }
